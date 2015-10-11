@@ -18,7 +18,7 @@
 #===============================================================================
 
 # Import hashlib library (md5 method is part of it)
-import hashlib    
+import hashlib
 # The char after x64
 c = 'a'
 # List with corrupted file
@@ -40,14 +40,14 @@ original_md5 = ['683610e269ba60c5fcc7a9f6d1a8bfd5', '70af24cd4fe2c8ee58edb902f01
 for i in original_md5:
     # File to check
     file_name = 'x64' + c + '.rpf'
-    with open(file_name) as file_to_check:
+    with open(file_name, 'rb') as file_to_check:
         # read contents of the file
-        data = file_to_check.read().encode('utf-8')
+        data = file_to_check.read()
         # pipe contents of the file through
         md5_returned = hashlib.md5(data).hexdigest()
         
         # Finally compare original MD5 with freshly calculated
-        print('Checking ' + file_name)
+        print('Checking ' + file_name + "\nCorrect md5: " + i + "\nFile md5: " + md5_returned)
         if i == md5_returned:
             print ('MD5 verified.')
             c = chr(ord(c)+1) # Increment c, like c++ or (c=c+1)
