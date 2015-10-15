@@ -12,13 +12,15 @@
 # Data: 2015/09/26 16:01
 # Idea Originale: http://stackoverflow.com/questions/16874598/how-do-i-calculate-the-md5-checksum-of-a-file-in-python
 # Politica di copyright: Fatene cio' che volete, ricordare di citare autore e idea originale.
-# Come funziona: Esamina il codice md5 dei file .rpf per verificarne l'integrità, i file corrotti verranno
+# Come funziona: Esamina il codice md5 dei file .rpf per verificarne l'integritï¿½, i file corrotti verranno
 #                indicati su un file di testo chiamato corrupted_files.txt
 # Come usare: Inserire questo file nella main directory di GTA V ed eseguirlo.
 #===============================================================================
 
 # Import hashlib library (md5 method is part of it)
 import hashlib
+# Import time library (time method is part of it)
+import time
 # The char after x64
 c = 'a'
 # List with corrupted file
@@ -35,6 +37,9 @@ original_md5 = ['683610e269ba60c5fcc7a9f6d1a8bfd5', '70af24cd4fe2c8ee58edb902f01
                 '6ad56befada1db7cccd9cea7834c825b', 'ff6d09527d7fdc005d3fa78435e09c8a', '1465c9da5cc17b68f14915b6c1d815bc',
                 '2c6e61201eb4f60d5c3c1e9ae6d67a32', '4c15a54a4c9573d7a0bcfa4689d9d1ed', '2c9cff0cc5f99ad2218e4c4de39881b7',
                 'db647120263d0282b6f6c555f6112a1c', '46a4abe50bfc78c30c0173d888cf2c4a']
+
+#Start the timer
+start_time = time.time()
 
 # Open, close, read file and calculate MD5 on its contents
 for i in original_md5:
@@ -56,7 +61,12 @@ for i in original_md5:
             # Add the corrupted file name to the list
             corrupted_file.append(file_name)
             c = chr(ord(c)+1) # Increment c, like c++ or (c=c+1)
-#   print(file_name, c)    
+#   print(file_name, c)
+
+# Print the number of the corrupted files
+print(len(corrupted_file) + "Errors!")
+# Print the execution time
+print("--- %s seconds ---" % (time.time() - start_time))
 
 # Print and write in a txtfiles the corrupted files
 output.write('Corrupted files: \nTo be sure, check with another program! \n')
