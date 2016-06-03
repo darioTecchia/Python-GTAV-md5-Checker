@@ -1,4 +1,4 @@
-# GTA V .rpf Integrity Checker
+# GTA V .rpf Files Integrity Checker
 
 #English
 
