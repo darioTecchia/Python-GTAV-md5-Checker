@@ -1,4 +1,4 @@
-# [Python] GTA-V-md5-Checker-v1.1-
+# GTA V .rpf Integrity Checker
 
 #English
 
